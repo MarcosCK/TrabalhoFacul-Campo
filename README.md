@@ -1,5 +1,4 @@
-      <h1>Campo Minado POO</h1>
-
+      Campo Minado POO
 
 <p align="center"> Jogo Campo minado desenvolvido em Java a pedido do professor Diegao do Jetta </p>
 <p align="center">Trabalho desenvolvido abordando todos temas de POO, Herança, Polimorfismo, abstração...</p>
