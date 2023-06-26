@@ -1,12 +1,12 @@
-      <h1>Campo Minado POO</h1>
+      <h1 align="center">Campo Minado POO</h1>
 
 
-<p>Jogo Campo minado desenvolvido em Java a pedido do professor Diegao do Jetta </p>
-<p>Trabalho desenvolvido abordando todos temas de POO, Herança, Polimorfismo, abstração...</p>
+<p align="center"> Jogo Campo minado desenvolvido em Java a pedido do professor Diegao do Jetta </p>
+<p align="center">Trabalho desenvolvido abordando todos temas de POO, Herança, Polimorfismo, abstração...</p>
 
 
 <div align="center">
-<img src="https://desblogada.files.wordpress.com/2021/05/kaka-cordovil-java-developer-2.gif" width="700px" />
+<img src="![WhatsApp Image 2023-06-26 at 9 31 09 AM](https://github.com/MarcosCK/TrabalhoFacul-Campo/assets/103136917/b044ec8d-ccd6-4b11-879e-7a750aefd8eb)" width="350px" height="350px" />
 </div>
 
 
