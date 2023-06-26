@@ -1,4 +1,4 @@
-      <h1 align="center">Campo Minado POO</h1>
+      <h1>Campo Minado POO</h1>
 
 
 <p align="center"> Jogo Campo minado desenvolvido em Java a pedido do professor Diegao do Jetta </p>
