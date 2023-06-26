@@ -1,119 +1,113 @@
 package campoMinado;
-
 import java.util.Random;
 import java.util.Scanner;
 
 public class Tabuleiro {
-	
-	 private int tamanho;
-	 private int totalMinas;
-     private boolean[][] tabuleiro;
-	 private boolean[][] minas;
-	 private boolean[][] revelado;
-	 private boolean gameOver;
-	 
 
-	public Tabuleiro(Boolean gameOver) {
-		tamanho = 5;
-		totalMinas = 5;
-		tabuleiro = new boolean[tamanho][tamanho];
-		minas = new boolean[tamanho][tamanho];
-		revelado = new boolean[tamanho][tamanho];
-		this.gameOver = false;
-	}
-	
-	 public void gerarTabuleiro() {
-	        Random random = new Random();
+	private char[][] tabuleiro;
+    private boolean[][] minas;
+    private int tamanho;
+    private int totalMinas;
+    
+    
+    public void definirJogo() {
+    	
+    	 Scanner scanner = new Scanner(System.in);
+    	
+    	System.out.println("Defina tamanho do seu tabuleiro");
+    	int tamanho = scanner.nextInt();
+    	
+    	System.out.println("Defina quantas bombas tera no seu tabuleiro");
+    	int totalMinas = scanner.nextInt();
+    	
+    	Jogo jogo = new CampoMinado(tamanho, totalMinas);
+    	jogo.iniciarJogo();
+    			
+    	
+    }
 
-	        int minasRestantes = totalMinas;
+    public Tabuleiro(int tamanho) {
+        this.tamanho = tamanho;
+        this.tabuleiro = new char[tamanho][tamanho];
+        this.minas = new boolean[tamanho][tamanho];
+    }
 
-	        while (minasRestantes > 0) {
-	            int linha = random.nextInt(tamanho);
-	            int coluna = random.nextInt(tamanho);
+    public void limparTabuleiro() {
+        for (int i = 0; i < tamanho; i++) {
+            for (int j = 0; j < tamanho; j++) {
+                tabuleiro[i][j] = '?';
+            }
+        }
+    }
 
-	            if (!minas[linha][coluna]) {
-	                minas[linha][coluna] = true;
-	                minasRestantes--;
-	            }
-	        }
-	    }
+    public void gerarMinas(int totalMinas) {
+        Random random = new Random();
 
-	    public void exibirTabuleiro() {
-	        System.out.print("  ");
-	        for (int i = 0; i < tamanho; i++) {
-	            System.out.print(i + " ");
-	        }
-	        System.out.println();
+        int minasRestantes = totalMinas;
 
-	        for (int i = 0; i < tamanho; i++) {
-	            System.out.print(i + " ");
-	            for (int j = 0; j < tamanho; j++) {
-	                if (revelado[i][j]) {
-	                    System.out.print(tabuleiro[i][j] + " ");
-	                } else {
-	                    System.out.print("? ");
-	                }
-	            }
-	            System.out.println();
-	        }
-	        System.out.println();
-	    }
+        while (minasRestantes > 0) {
+            int linha = random.nextInt(tamanho);
+            int coluna = random.nextInt(tamanho);
 
-	    public void fazerJogada() {
-	        Scanner scanner = new Scanner(System.in);
+            if (!minas[linha][coluna]) {
+                minas[linha][coluna] = true;
+                minasRestantes--;
+            }
+        }
+    }
+    
+    public boolean posicaoValida(int linha, int coluna) {
+        return linha >= 0 && linha < tamanho && coluna >= 0 && coluna < tamanho;
+    }
 
-	        System.out.print("Informe a linha: ");
-	        int linha = scanner.nextInt();
+    public boolean posicaoRevelada(int linha, int coluna) {
+        return tabuleiro[linha][coluna] != '?';
+ 
+    }
 
-	        System.out.print("Informe a coluna: ");
-	        int coluna = scanner.nextInt();
+    public void revelarPosicao(int linha, int coluna) {
+        tabuleiro[linha][coluna] = '.';
+    }
 
-	        if (linha < 0 || linha >= tamanho || coluna < 0 || coluna >= tamanho) {
-	            System.out.println("Posição inválida!");
-	            return;
-	        }
+    public boolean temMina(int linha, int coluna) {
+        return minas[linha][coluna];
+    }
 
-	        if (revelado[linha][coluna]) {
-	            System.out.println("Posição já revelada!");
-	            return;
-	        }
-	    }
+    public int contarMinasAdjacentes(int linha, int coluna) {
+        int count = 0;
 
-	    private int contarMinasAdjacentes(int linha, int coluna) {
-	        int count = 0;
+        for (int i = linha - 1; i <= linha + 1; i++) {
+            for (int j = coluna - 1; j <= coluna + 1; j++) {
+                if (posicaoValida(i, j) && temMina(i, j)) {
+                    count++;
+                }
+            }
+        }
 
-	        for (int i = linha - 1; i <= linha + 1; i++) {
-	            for (int j = coluna - 1; j <= coluna + 1; j++) {
-	                if (i >= 0 && i < tamanho && j >= 0 && j < tamanho) {
-	                    if (minas[i][j]) {
-	                        count++;
-	                    }
-	                }
-	            }
-	        }
+        return count;
+    }
+    
+    
+    public int jogadasRestantes() {
+        int totalMinas = 0;
+        for (int i = 0; i < tamanho; i++) {
+            for (int j = 0; j < tamanho; j++) {
+                if (tabuleiro[i][j] == '?') {
+                    totalMinas++;
+                }
+            }
+        }
+        return totalMinas;
+    }
 
-	        return count;
-	    }
+    public char[][] getTabuleiro() {
+        return tabuleiro;
+    }
 
-	    public void verificarFimDeJogo() {
-	        int jogadasRestantes = tamanho * tamanho - totalMinas;
+    public void atualizarPosicao(int linha, int coluna, char valor) {
+        tabuleiro[linha][coluna] = valor;
+    }
+    
 
-	        if (jogadasRestantes == 0) {
-	            gameOver = true;
-	        }
-	    }
 
-	    public static void main(String[] args) {
-	        int tamanho = 5; // Tamanho do tabuleiro
-	        int totalMinas = 5; // Número total de minas
-
-	        CampoMinado campoMinado = new CampoMinado(tamanho, totalMinas);
-	        campoMinado.iniciarJogo();
-	    }
-
-	 
-	 
-	
-	
-
-}
+}	

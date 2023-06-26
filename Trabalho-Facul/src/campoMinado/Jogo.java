@@ -1,29 +1,26 @@
 package campoMinado;
 
-public class Jogo {
+public abstract class Jogo {
 	
-
-    private Tabuleiro board;
-	
+	 public abstract void iniciarJogo();
 
 
-	public void iniciarJogo() {
-		
-        board.gerarTabuleiro();
+	   public void exibirTabuleiro(char[][] tabuleiro) {
+	        int tamanho = tabuleiro.length;
 
-        while (!gameOver) {
-           board. exibirTabuleiro();
-            board.fazerJogada();
-            board.verificarFimDeJogo();
-        }
+	        System.out.print("  ");
+	        for (int i = 0; i < tamanho; i++) {
+	            System.out.print(i + " ");
+	        }
+	        System.out.println();
 
-        board.exibirTabuleiro();
-        System.out.println("Fim de jogo!");
-    }
-	
-	
-    
-    
-
-	}
-	
+	        for (int i = 0; i < tamanho; i++) {
+	            System.out.print(i + " ");
+	            for (int j = 0; j < tamanho; j++) {
+	                System.out.print(tabuleiro[i][j] + " ");
+	            }
+	            System.out.println();
+	        }
+	        System.out.println();
+	    }
+}
