@@ -5,7 +5,7 @@
 
 
 <div align="center">
-<img src="![WhatsApp Image 2023-06-26 at 9 31 09 AM](https://github.com/MarcosCK/TrabalhoFacul-Campo/assets/103136917/b044ec8d-ccd6-4b11-879e-7a750aefd8eb)" width="350px" height="350px" />
+<img src="![WhatsApp Image 2023-06-26 at 9 31 09 AM](https://github.com/MarcosCK/TrabalhoFacul-Campo/assets/103136917/b044ec8d-ccd6-4b11-879e-7a750aefd8eb)"/>
 </div>
 
 
