@@ -5,7 +5,7 @@
 
 
 <div align="center">
-<img src="https://github.com/MarcosCK/TrabalhoFacul-Campo/issues/2#issue-1774909451"/>
+<img src="https://github.com/MarcosCK/TrabalhoFacul-Campo/assets/103136917/b044ec8d-ccd6-4b11-879e-7a750aefd8eb"/>
 </div>
 
 
